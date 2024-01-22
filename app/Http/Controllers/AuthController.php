@@ -16,10 +16,22 @@ class AuthController extends Controller
     public function registerPost(Request $request){
         $user = new User();
 
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $user->firstName = $request->firstName;
+        $user->lastName = $request->lastName;
+        $user->primaryEmail = $request->primaryEmail;
+        $user->companyName = $request->companyName;
+        $user->yearBorn = $request->yearBorn;
+        $user->fulltimeExp = $request->fulltimeExp;
+        $user->yearExp = $request->yearExp;
+        $user->descBigdata = $request->descBigdata;
+        $user->orgFocus = $request->orgFocus;
+        $user->areaFocus = $request->areaFocus;
         $user->password = Hash::make($request->password);
-    
+        $user->confirmPassword = Hash::make($request->confirmPassword);
+        $user->secQuestion = $request->secQuestion;
+        $user->secAnswer = $request->secAnswer;
+
+
         $user->save();
 
         return back()->with("success", "registration successfully");
@@ -27,5 +39,9 @@ class AuthController extends Controller
 
     public function login(){
         return view ('login');
+    }
+
+    public function loginPost(){
+        return view ('welcome');
     }
 }
