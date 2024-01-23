@@ -18,10 +18,22 @@ class AuthController extends Controller
     {
         $user = new User();
  
-        $user->name = $request->name;
+        $user->firstName = $request->firstName;
+        $user->lastName = $request->lastName;
         $user->email = $request->email;
+        $user->compName = $request->compName;
+        $user->currentJob = $request->currentJob;
+        $user->yearBorn = $request->yearBorn;
+        $user->fulltimeExp = $request->fulltimeExp;
+        $user->ExpData = $request->ExpData;
+        $user->descBigdata = $request->descBigdata;
+        $user->orgFocus = $request->orgFocus;
+        $user->areaFocus = $request->areaFocus;
         $user->password = Hash::make($request->password);
- 
+        $user->confirmPassword = Hash::make($request->confirmPassword);
+        $user->secQuestion = $request->secQuestion;
+        $user->secAnswer = $request->secAnswer;
+        
         $user->save();
  
         return back()->with('success', 'Register successfully');
